@@ -135,18 +135,24 @@ body.dark #toggle-theme {
   color: #ddd;
 }
 
-body.dark .copy-button {
+body.dark #toggle-theme:hover {
   background-color: #555;
 }
 
-body.dark .copy-button:hover {
-  background-color: #777;
+body.dark .copy-button {
+  background-color: #007bff;
 }
 
-/* Responsividad */
-@media (max-width: 600px) {
-  .country {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+body.dark .copy-button:hover {
+  background-color: #0056b3;
+}
+
+#loading {
+  text-align: center;
+  font-size: 1.2em;
+  display: none;
+}
+
+.titulo-swal {
+  font-size: 15px;
 }

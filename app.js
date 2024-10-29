@@ -73,13 +73,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const countryDiv = this.closest('.country');
         const countryInfo = countryDiv.innerText;
         copyToClipboard(countryInfo);
-        alert('Información copiada al portapapeles');
+        
+        // Mensaje de sweetAlert
+        Swal.fire({
+          //position: "top-end",
+          icon: "success",
+          title: "Información copiada al portapapeles",
+          showConfirmButton: false,
+          timer: 1500,
+          customClass: {
+            title: 'titulo-swal'
+          }
+        });
       });
     });
+
   
     displayPagination(countries.length);
   }
- 
 
   function copyToClipboard(text) {
     const textArea = document.createElement('textarea');
