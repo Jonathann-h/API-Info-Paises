@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#search {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 16px;
+}
+
+#countries-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre los cuadros */
+  justify-content: center; /* Centra los cuadros horizontalmente */
+}
+
+.country {
+  background: #f0f0f0;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  flex: 1 1 200px; /* Crecimiento, contracción y tamaño base del cuadro */
+  max-width: 200px; /* Tamaño máximo del cuadro */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s; /* Transición suave */
+}
+
+.country:hover {
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra más prominente */
+}
+
+.country h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.country p {
+  margin: 5px 0;
+}
+
+@media (max-width: 600px) {
+  .country {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark .country {
+  background: #1e1e1e;
+}
+
+#toggle-theme {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.country-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-button {
+  background-color: #7d7f81;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+}
+
+.flag {
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  margin-bottom: 5px;
+}
