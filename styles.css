@@ -132,3 +132,26 @@ input:checked + .slider:before {
 .titulo-swal {
   font-size: 15px;
 }
+
+.pagination {
+  margin-top: 20px; /* Espacio superior */
+  text-align: center; /* Centrar los botones de paginación */
+}
+
+.pagination button {
+  margin: 0 5px; /* Espacio entre los botones */
+  padding: 5px 10px; /* Espaciado interno */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor al pasar */
+}
+
+.pagination button:hover {
+  background-color: #0056b3; /* Color de fondo en hover */
+}
+
+.pagination button.active {
+  background-color: #0056b3; /* Color para la página activa */
+}

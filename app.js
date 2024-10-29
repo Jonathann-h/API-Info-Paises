@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
       newPaginationDiv.appendChild(pageButton);
     }
 
+    // Añadir la paginación después de la lista de países
     countriesList.appendChild(newPaginationDiv);
   }
 
