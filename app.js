@@ -39,23 +39,23 @@ document.addEventListener('DOMContentLoaded', function() {
   function displayCountries(countries) {
     countriesList.innerHTML = '';
     const paginatedCountries = countries.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-  
+
     if (paginatedCountries.length === 0) {
       countriesList.innerHTML = '<p>No se encontraron países</p>';
       return;
     }
-  
+
     paginatedCountries.forEach(country => {
       const countryDiv = document.createElement('div');
       countryDiv.classList.add('country');
-  
+
       const capital = country.capital ? country.capital[0] : 'N/A';
       const languages = country.languages ? Object.values(country.languages).join(', ') : 'N/A';
-  
+
       countryDiv.innerHTML = `
         <div class="country-header">
-          <h2>${country.name.common}</h2>
           <button class="copy-button" data-country="${country.name.common}">Copy</button>
+          <h2>${country.name.common}</h2>
         </div>
         <img src="${country.flags.png}" alt="Bandera de ${country.name.common}" class="flag">
         <p>Capital: ${capital}</p>
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       countriesList.appendChild(countryDiv);
     });
-  
+
     // Añadir evento de click para copiar contenido
     document.querySelectorAll('.copy-button').forEach(button => {
       button.addEventListener('click', function() {
@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mensaje de sweetAlert
         Swal.fire({
-          //position: "top-end",
           icon: "success",
           title: "Información copiada al portapapeles",
           showConfirmButton: false,
@@ -88,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
-  
     displayPagination(countries.length);
   }
 
@@ -149,9 +147,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }, debounceDelay));
 
   getCountries();
-});
-
-const toggleThemeButton = document.getElementById('toggle-theme');
-toggleThemeButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
 });
