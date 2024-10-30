@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const apiUrl = 'https://restcountries.com/v3.1/all';
 
+  const regionFilter = document.getElementById('region-filter');
+
+  regionFilter.addEventListener('change', function() {
+    const selectedRegion = this.value;
+    filterCountriesByRegion(selectedRegion);
+  });
+
+
   function showLoading() {
     loadingIndicator.style.display = 'block';
   }
@@ -35,6 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
       hideLoading();
     }
   }
+
+
+  function filterCountriesByRegion(region) {
+    let filteredCountries;
+    
+    // Si no hay una región seleccionada, muestra todos los países
+    if (!region) {
+      filteredCountries = countriesData;
+    } else {
+      filteredCountries = countriesData.filter(country => country.region === region);
+    }
+    
+    // Reiniciar la página actual y mostrar los países filtrados
+    currentPage = 1;
+    displayCountries(filteredCountries);
+  }
+  
 
   function displayCountries(countries) {
     countriesList.innerHTML = '';
@@ -67,14 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
       countriesList.appendChild(countryDiv);
     });
 
-    // Añadir evento de click para copiar contenido
     document.querySelectorAll('.copy-button').forEach(button => {
       button.addEventListener('click', function() {
         const countryDiv = this.closest('.country');
         const countryInfo = countryDiv.innerText;
         copyToClipboard(countryInfo);
-        
-        // Mensaje de sweetAlert
+
         Swal.fire({
           icon: "success",
           title: "Información copiada al portapapeles",
@@ -123,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
       newPaginationDiv.appendChild(pageButton);
     }
 
-    // Añadir la paginación después de la lista de países
     countriesList.appendChild(newPaginationDiv);
   }
 
@@ -149,4 +171,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
   getCountries();
 });
-

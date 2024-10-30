@@ -10,8 +10,11 @@
 </head>
 <body>
   <h1>Listado de Países - API</h1>
+
+  <!-- Campo de búsqueda -->
   <input type="text" id="search" placeholder="Buscar país...">
   
+  <!-- Filtro de región -->
   <div class="filters">
     <select id="region-filter">
       <option value="">Filtrar por región</option>
@@ -23,9 +26,12 @@
     </select>
   </div>
 
-  <div id="loading">Cargando...</div>
+  <!-- Indicador de carga -->
+  <div id="loading" style="display: none;">Cargando...</div>
+
+  <!-- Lista de países -->
   <div id="countries-list"></div>
-  
+
   <script src="app.js"></script>
 </body>
 </html>
