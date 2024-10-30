@@ -11,6 +11,18 @@
 <body>
   <h1>Listado de Países - API</h1>
   <input type="text" id="search" placeholder="Buscar país...">
+  
+  <div class="filters">
+    <select id="region-filter">
+      <option value="">Filtrar por región</option>
+      <option value="Africa">África</option>
+      <option value="Americas">América</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europa</option>
+      <option value="Oceania">Oceanía</option>
+    </select>
+  </div>
+
   <div id="loading">Cargando...</div>
   <div id="countries-list"></div>
   
