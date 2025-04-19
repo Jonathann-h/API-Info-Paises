@@ -441,3 +441,55 @@ h1 {
     font-size: 0.9rem;
   }
 }
+
+/* Estilos para el footer */
+.page-footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.page-footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.page-footer a:hover {
+  color: var(--success-color);
+  text-decoration: underline;
+}
+
+.developer-name {
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+/* Efecto de borde superior */
+.page-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
