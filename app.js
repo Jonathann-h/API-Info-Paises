@@ -123,47 +123,34 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function displayPagination(totalItems) {
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    let paginationDiv = document.querySelector('.pagination-container');
+    const totalPages = Math.ceil(totalItems / itemsPerPage);  
+    const paginationContainer = document.getElementById('pagination-container');
+    paginationContainer.innerHTML = '';
     
-    // Si no existe el contenedor, lo creamos
-    if (!paginationDiv) {
-      paginationDiv = document.createElement('div');
-      paginationDiv.classList.add('pagination-container');
-      document.body.appendChild(paginationDiv);
-    }
-    
-    // Limpiamos la paginación existente
-    paginationDiv.innerHTML = '';
     const pagination = document.createElement('div');
     pagination.classList.add('pagination');
-    paginationDiv.appendChild(pagination);
+    paginationContainer.appendChild(pagination);
     
     // Siempre mostrar 7 botones de página
     let startPage, endPage;
     
     if (totalPages <= 7) {
-      // Menos de 7 páginas totales - mostrar todas
       startPage = 1;
       endPage = totalPages;
     } else {
-      // Más de 7 páginas - calcular qué mostrar
       if (currentPage <= 4) {
-        // Páginas 1-7
         startPage = 1;
         endPage = 7;
       } else if (currentPage >= totalPages - 3) {
-        // Últimas 7 páginas
         startPage = totalPages - 6;
         endPage = totalPages;
       } else {
-        // Páginas intermedias (3 a cada lado)
         startPage = currentPage - 3;
         endPage = currentPage + 3;
       }
     }
     
-    // Botón "Anterior" si no estamos en la primera página
+    // Botón "Anterior"
     if (currentPage > 1) {
       const prevButton = document.createElement('button');
       prevButton.innerHTML = '&laquo;';
@@ -190,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
       pagination.appendChild(pageButton);
     }
     
-    // Botón "Siguiente" si no estamos en la última página
+    // Botón "Siguiente"
     if (currentPage < totalPages) {
       const nextButton = document.createElement('button');
       nextButton.innerHTML = '&raquo;';

@@ -9,36 +9,43 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <h1>Listado de Países - API</h1>
+  <div class="content-wrapper">
+    <main>
+      <h1>Listado de Países - API</h1>
 
-  <!-- Campo de búsqueda -->
-  <input type="text" id="search" placeholder="Buscar país...">
-  
-  <!-- Filtro de región -->
-  <div class="filters">
-    <select id="region-filter">
-      <option value="">Filtrar por región</option>
-      <option value="Africa">África</option>
-      <option value="Americas">América</option>
-      <option value="Asia">Asia</option>
-      <option value="Europe">Europa</option>
-      <option value="Oceania">Oceanía</option>
-    </select>
+      <!-- Campo de búsqueda -->
+      <input type="text" id="search" placeholder="Buscar país...">
+      
+      <!-- Filtro de región -->
+      <div class="filters">
+        <select id="region-filter">
+          <option value="">Filtrar por región</option>
+          <option value="Africa">África</option>
+          <option value="Americas">América</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europa</option>
+          <option value="Oceania">Oceanía</option>
+        </select>
+      </div>
+
+      <!-- Indicador de carga -->
+      <div id="loading" style="display: none;">Cargando...</div>
+
+      <!-- Lista de países -->
+      <div id="countries-list"></div>
+      
+      <!-- Contenedor para la paginación -->
+      <div id="pagination-container"></div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="footer-content">
+        <p>Datos proporcionados por <a href="https://restcountries.com/" target="_blank" rel="noopener noreferrer">REST Countries API</a></p>
+        <p>Desarrollado por <span class="developer-name">JH</span> © <span class="current-year">2025</span></p>
+      </div>
+    </footer>
   </div>
 
-  <!-- Indicador de carga -->
-  <div id="loading" style="display: none;">Cargando...</div>
-
-  <!-- Lista de países -->
-  <div id="countries-list"></div>
-
   <script src="app.js"></script>
-
-  <footer class="page-footer">
-    <div class="footer-content">
-      <p>Datos proporcionados por <a href="https://restcountries.com/" target="_blank" rel="noopener noreferrer">REST Countries API</a></p>
-      <p>Desarrollado por <span class="developer-name">JH</span> © <span class="current-year">2025</span></p>
-    </div>
-  </footer>
 </body>
 </html>
