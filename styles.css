@@ -102,18 +102,9 @@ h1 {
   padding: 0 20px;
 }
 
-/* Filtros con más espacio */
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  padding-top: 10px;
-}
-
+/* Filtro por región - Versión mejorada */
 #region-filter {
-  padding: 12px 20px;
+  padding: 14px 20px;
   border: none;
   border-radius: var(--border-radius);
   background-color: white;
@@ -123,17 +114,56 @@ h1 {
   cursor: pointer;
   transition: var(--transition);
   appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%238d99ae" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%234361ee" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
   background-repeat: no-repeat;
   background-position: right 15px center;
   padding-right: 40px;
-  min-width: 200px;
+  min-width: 220px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  border: 1px solid rgba(67, 97, 238, 0.1);
+}
+
+#region-filter:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.1);
 }
 
 #region-filter:focus {
   outline: none;
-  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
 }
+
+/* Contenedor de filtros mejorado */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto 30px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* Etiqueta opcional para el filtro */
+.filter-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* Versión alternativa con diseño más moderno */
+/*
+#region-filter {
+  background: linear-gradient(135deg, white, #f8f9fa);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+*/
 
 /* Listado de países */
 #countries-list {
