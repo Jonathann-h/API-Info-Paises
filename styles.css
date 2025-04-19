@@ -30,6 +30,8 @@ body {
   display: flex;
   flex-direction: column;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  padding: 20px 20px 0 20px;
 }
 
 main {
@@ -338,6 +340,12 @@ h1::after {
   padding: 20px 0;
   text-align: center;
   margin-top: auto;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .footer-content {
