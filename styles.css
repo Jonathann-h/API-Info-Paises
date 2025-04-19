@@ -124,6 +124,35 @@ h1 {
   border: 1px solid rgba(67, 97, 238, 0.1);
 }
 
+#region-filter option {
+  padding: 12px 15px;
+  background-color: white;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilo al pasar el ratón sobre las opciones */
+#region-filter option:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* Estilo para la opción seleccionada */
+#region-filter option:checked {
+  background-color: var(--light-color) !important;
+  color: var(--primary-color) !important;
+  font-weight: 500;
+}
+
+/* Estilo para el grupo de opciones */
+#region-filter optgroup {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--primary-color);
+  padding: 5px;
+}
+
 #region-filter:hover {
   border-color: var(--primary-color);
   transform: translateY(-2px);
