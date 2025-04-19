@@ -124,16 +124,59 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function displayPagination(totalItems) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const paginationDiv = document.querySelector('.pagination');
-
-    if (paginationDiv) {
-      paginationDiv.remove();
+    let paginationDiv = document.querySelector('.pagination-container');
+    
+    // Si no existe el contenedor, lo creamos
+    if (!paginationDiv) {
+      paginationDiv = document.createElement('div');
+      paginationDiv.classList.add('pagination-container');
+      document.body.appendChild(paginationDiv);
     }
-
-    const newPaginationDiv = document.createElement('div');
-    newPaginationDiv.classList.add('pagination');
-
-    for (let i = 1; i <= totalPages; i++) {
+    
+    // Limpiamos la paginación existente
+    paginationDiv.innerHTML = '';
+    const pagination = document.createElement('div');
+    pagination.classList.add('pagination');
+    paginationDiv.appendChild(pagination);
+    
+    // Siempre mostrar 7 botones de página
+    let startPage, endPage;
+    
+    if (totalPages <= 7) {
+      // Menos de 7 páginas totales - mostrar todas
+      startPage = 1;
+      endPage = totalPages;
+    } else {
+      // Más de 7 páginas - calcular qué mostrar
+      if (currentPage <= 4) {
+        // Páginas 1-7
+        startPage = 1;
+        endPage = 7;
+      } else if (currentPage >= totalPages - 3) {
+        // Últimas 7 páginas
+        startPage = totalPages - 6;
+        endPage = totalPages;
+      } else {
+        // Páginas intermedias (3 a cada lado)
+        startPage = currentPage - 3;
+        endPage = currentPage + 3;
+      }
+    }
+    
+    // Botón "Anterior" si no estamos en la primera página
+    if (currentPage > 1) {
+      const prevButton = document.createElement('button');
+      prevButton.innerHTML = '&laquo;';
+      prevButton.addEventListener('click', () => {
+        currentPage--;
+        displayCountries(countriesData);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      pagination.appendChild(prevButton);
+    }
+    
+    // Botones de página numéricos
+    for (let i = startPage; i <= endPage; i++) {
       const pageButton = document.createElement('button');
       pageButton.textContent = i;
       if (i === currentPage) {
@@ -142,11 +185,22 @@ document.addEventListener('DOMContentLoaded', function() {
       pageButton.addEventListener('click', () => {
         currentPage = i;
         displayCountries(countriesData);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-      newPaginationDiv.appendChild(pageButton);
+      pagination.appendChild(pageButton);
     }
-
-    countriesList.appendChild(newPaginationDiv);
+    
+    // Botón "Siguiente" si no estamos en la última página
+    if (currentPage < totalPages) {
+      const nextButton = document.createElement('button');
+      nextButton.innerHTML = '&raquo;';
+      nextButton.addEventListener('click', () => {
+        currentPage++;
+        displayCountries(countriesData);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      pagination.appendChild(nextButton);
+    }
   }
 
   function filterCountries(searchTerm) {

@@ -1,165 +1,377 @@
-/* Estilos básicos */
+/* Estilos base y variables */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --dark-color: #1a1a2e;
+  --light-color: #f8f9fa;
+  --text-color: #2b2d42;
+  --text-light: #8d99ae;
+  --success-color: #4cc9f0;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset y estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  background-color: var(--light-color);
+  color: var(--text-color);
+  line-height: 1.6;
   padding: 20px;
+  min-height: 100vh;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2em;
-  color: #444;
+h1::after { /* Línea de fondo para el encabezado */
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
-/* Campo de búsqueda */
-#search {
+#search { /* Estilo del input de búsqueda */
   display: block;
-  margin: 20px auto;
-  padding: 12px;
-  width: 80%;
-  max-width: 500px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 600px;
   font-size: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  transition: border-color 0.3s ease;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  position: relative;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%238d99ae" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  padding-left: 50px;
 }
 
-#search:focus {
-  border-color: #007bff;
+#search:focus { /* Efecto al enfocar el input de búsqueda */
+  background-color: white;
+  border: 1px solid var(--primary-color); 
   outline: none;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+  transform: translateY(-2px);
+}
+
+header {  /* Encabezado */ 
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 0 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--dark-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Contenedor de búsqueda y filtros mejorado */
+.search-container {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 20px;
+}
+
+/* Filtros con más espacio */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+#region-filter {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  font-size: 0.95rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%238d99ae" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+  min-width: 200px;
+}
+
+#region-filter:focus {
+  outline: none;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
 }
 
 /* Listado de países */
 #countries-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
   justify-content: center;
+  padding: 20px 0;
 }
 
-/* Tarjeta de cada país */
+/* Tarjeta de país */
 .country {
-  background: #fff;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.country::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 220px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  text-align: center;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
 .country:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.country-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
 .country h2 {
-  font-size: 1.4em;
-  color: #000;
-  margin-bottom: 5px;
+  font-size: 1.4rem;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.flag {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.country:hover .flag {
+  transform: scale(1.02);
 }
 
 .country p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-  color: #666;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: var(--text-color);
 }
 
-.country img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
+.country p span {
+  font-weight: 500;
+  color: var(--dark-color);
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #031c6f;
-}
-
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
+/* Botón de copiar */
 .copy-button {
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(67, 97, 238, 0.3);
 }
 
 .copy-button:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
 }
 
-#loading {
-  text-align: center;
-  font-size: 1.2em;
-  display: none;
+.copy-button:active {
+  transform: translateY(0);
 }
 
-.titulo-swal {
-  font-size: 15px;
-}
+/*.copy-button::before {
+  content: '📋';
+}*/
 
+/* Paginación */
 .pagination {
-  margin-top: 20px; /* Espacio superior */
-  text-align: center; /* Centrar los botones de paginación */
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .pagination button {
-  margin: 0 5px; /* Espacio entre los botones */
-  padding: 5px 10px; /* Espaciado interno */
-  background-color: #007bff; /* Color de fondo del botón */
-  color: white; /* Color de texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambiar cursor al pasar */
+  padding: 8px 15px;
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
 }
 
 .pagination button:hover {
-  background-color: #0056b3; /* Color de fondo en hover */
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .pagination button.active {
-  background-color: #0056b3; /* Color para la página activa */
+  background-color: var(--primary-color);
+  color: white;
+  transform: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary-color);
 }
 
-/* Filtros */
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+/* Loading */
+#loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  display: none;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 15px;
+}
+
+.loading-spinner:after {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  border-color: var(--primary-color) transparent var(--primary-color) transparent;
+  animation: loading-spinner 1.2s linear infinite;
+}
+
+@keyframes loading-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mensaje de no resultados */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .search-container {
+    padding: 0 15px;
+  }
+  
+  #countries-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #region-filter {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  #search {
+    padding: 12px 15px 12px 40px;
+  }
+  
+  .country {
+    padding: 15px;
+  }
+  
+  .flag {
+    height: 140px;
+  }
+  
+  .pagination {
+    gap: 5px;
+  }
+  
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
 }
