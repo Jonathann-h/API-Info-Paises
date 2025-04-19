@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       countryDiv.innerHTML = `
         <div class="country-header">
-          <button class="copy-button" data-country="${country.name.common}">Copy</button>
+          <button class="copy-button" data-country="${country.name.common}">Copiar info</button>
           <h2>${country.name.common}</h2>
         </div>
         <img src="${country.flags.png}" alt="Bandera de ${country.name.common}" class="flag">
